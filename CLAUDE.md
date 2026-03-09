@@ -28,7 +28,7 @@ When asked to build a miniapp from this template:
    git clone https://github.com/snarktank/ralph scripts/ralph
    ```
 4. **Convert PRD to Ralph format** — create `scripts/ralph/prd.json` from `docs/prd.md` following the JSON schema below
-5. **Tell the user to run Ralph** — `./scripts/ralph/ralph.sh 20`
+5. **Tell the user to run Ralph** — `./scripts/ralph/ralph.sh --tool claude 20`
 
 **Do NOT implement the app yourself. Design it and create the PRD. Ralph builds it.**
 
