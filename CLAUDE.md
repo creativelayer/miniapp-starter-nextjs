@@ -23,10 +23,49 @@ When asked to build a miniapp from this template:
 
 1. **Read this file and the template code** to understand the patterns
 2. **Design the app** — create a PRD at `docs/prd.md` with user stories and acceptance criteria
-3. **Convert to Ralph format** — use `/ralph` to generate `scripts/ralph/prd.json`
-4. **Tell the user to run Ralph** — `./scripts/ralph/ralph.sh 20`
+3. **Install Ralph** — clone into scripts/ralph:
+   ```bash
+   git clone https://github.com/snarktank/ralph scripts/ralph
+   ```
+4. **Convert PRD to Ralph format** — create `scripts/ralph/prd.json` from `docs/prd.md` following the JSON schema below
+5. **Tell the user to run Ralph** — `./scripts/ralph/ralph.sh 20`
 
 **Do NOT implement the app yourself. Design it and create the PRD. Ralph builds it.**
+
+### Ralph prd.json Schema
+
+```json
+{
+  "featureName": "Feature Name",
+  "branchName": "ralph/feature-name",
+  "description": "Brief description from PRD overview",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Story title",
+      "priority": 1,
+      "acceptanceCriteria": [
+        "Criterion 1",
+        "Criterion 2",
+        "pnpm build passes"
+      ],
+      "passes": false,
+      "notes": "Implementation hints, file paths, patterns to follow"
+    }
+  ],
+  "qualityChecks": {
+    "typecheck": "pnpm build",
+    "test": "pnpm test:e2e",
+    "lint": "pnpm lint"
+  },
+  "techStack": {
+    "framework": "Next.js 14 (App Router)",
+    "testing": "Playwright + farcaster-test-harness"
+  }
+}
+```
+
+All stories must have `"passes": false`. Ralph marks them as it completes each one.
 
 ## Architecture Patterns
 
